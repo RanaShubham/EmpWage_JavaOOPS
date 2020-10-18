@@ -50,6 +50,7 @@ public class EmpWage_JavaOOPS implements IBM, Microsoft, Flipkart
 	int partTimeHours;
 	int maxWorkingDays;
 	int maxWorkingHrs;
+	ArrayList dailyWageArray = new ArrayList();
 
 	//Constructor
 	EmpWage_JavaOOPS(int wagePerHour, int fullDayHours, int partTimeHours, int maxWorkingDays, int maxWorkingHrs)
@@ -62,7 +63,7 @@ public class EmpWage_JavaOOPS implements IBM, Microsoft, Flipkart
 	}
 
 	//To calculate monthly wage
-	int calcTotalWage ()
+	void calcTotalWage ()
 	{		
 		while (true)
 		{
@@ -72,17 +73,20 @@ public class EmpWage_JavaOOPS implements IBM, Microsoft, Flipkart
 			{
 				case IS_FULL_TIME:
 					this.dailyWage = this.wagePerHour * this.fullDayHours;
+					dailyWageArray.add(this.dailyWage);
 					this.monthlyWage = this.monthlyWage + this.dailyWage;
 					this.workingHrs = this.workingHrs + this.fullDayHours;
 					this.workingDays++;
 					break;
 				case IS_PART_TIME:
 					this.dailyWage = this.wagePerHour * this.partTimeHours;
+					dailyWageArray.add(this.dailyWage);
 					this.monthlyWage = this.monthlyWage + this.dailyWage;
 					this.workingHrs = this.workingHrs + this.partTimeHours;
 					this.workingDays++;
 					break;
 				default:
+					dailyWageArray.add(0);
 					this.workingDays++;
 			}
 			
@@ -92,7 +96,6 @@ public class EmpWage_JavaOOPS implements IBM, Microsoft, Flipkart
 			}
 		}
 		
-		return this.monthlyWage;
 	}
 
 	//Main method

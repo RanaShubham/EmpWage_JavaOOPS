@@ -1,5 +1,8 @@
 package EmpWage_JavaOOPS;
 
+import java.util.ArrayList;
+import java.util.List;
+
 interface IBM 
 {
 	//Constants
@@ -101,8 +104,10 @@ public class EmpWage_JavaOOPS implements IBM, Microsoft, Flipkart
 		EmpWage_JavaOOPS microsoft = new EmpWage_JavaOOPS(Microsoft.WAGE_PER_HOUR, Microsoft.FULL_DAY_HRS, Microsoft.PART_TIME_HRS, Microsoft.MAX_WORKING_DAYS, Microsoft.MAX_WORKING_HRS);
 		EmpWage_JavaOOPS flipkart = new EmpWage_JavaOOPS(Flipkart.WAGE_PER_HOUR, Flipkart.FULL_DAY_HRS, Flipkart.PART_TIME_HRS, Flipkart.MAX_WORKING_DAYS, Flipkart.MAX_WORKING_HRS);
 	
-		int [] totalWages = {ibm.calcTotalWage(),microsoft.calcTotalWage(),flipkart.calcTotalWage()};
+		List<EmpWage_JavaOOPS> wageList = new ArrayList<EmpWage_JavaOOPS>();
+		wageList.add(ibm);
+		wageList.add(microsoft);
+		wageList.add(flipkart);
 		
-		System.out.println(totalWages[0]+" "+totalWages[1]+" "+totalWages[2]);
 	}
 }

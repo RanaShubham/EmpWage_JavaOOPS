@@ -12,12 +12,17 @@ public class EmpWage_JavaOOPS {
 		System.out.println("Welcome to employee wage computation");
 		int empAttendance = (int)Math.floor(Math.random()*10)%2;
 		
-		if (empAttendance == 1)
-			System.out.println("Daily wage for today as full time emp is: "+WAGE_PER_HOUR*FULL_DAY_HRS);
-		else if (empAttendance == 2)
-			System.out.println("Daily wage for today as part time emp is: "+WAGE_PER_HOUR*PART_TIME_HRS);
-		else
-			System.out.println("Daily wage for today is 0");
+		switch (empAttendance) 
+		{
+			case  1:
+				System.out.println("Daily wage for today as full time emp is: "+WAGE_PER_HOUR*FULL_DAY_HRS);
+				break;
+			case  2:
+				System.out.println("Daily wage for today as part time emp is: "+WAGE_PER_HOUR*PART_TIME_HRS);
+				break;
+			default :
+				System.out.println("Daily wage for today is 0");
+		}
 	}
 
 }

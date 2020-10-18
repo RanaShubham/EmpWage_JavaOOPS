@@ -52,7 +52,7 @@ public class EmpWage_JavaOOPS implements IBM, Microsoft, Flipkart
 	int maxWorkingHrs;
 	ArrayList dailyWageArray = new ArrayList();
 
-	//Constructor
+
 	EmpWage_JavaOOPS(int wagePerHour, int fullDayHours, int partTimeHours, int maxWorkingDays, int maxWorkingHrs)
 	{
 		this.wagePerHour = wagePerHour;
@@ -62,7 +62,8 @@ public class EmpWage_JavaOOPS implements IBM, Microsoft, Flipkart
 		this.maxWorkingHrs = maxWorkingHrs;
 	}
 
-	//To calculate monthly wage
+	
+	//To calculate monthly wage and store daily wage
 	void calcTotalWage ()
 	{		
 		while (true)
@@ -98,6 +99,15 @@ public class EmpWage_JavaOOPS implements IBM, Microsoft, Flipkart
 		
 	}
 
+	
+	//to get total wage
+	private static int getTotalWage(EmpWage_JavaOOPS obj)
+	{
+		obj.calcTotalWage();
+		return obj.monthlyWage;
+	}
+	
+	
 	//Main method
 	public static void main(String[] args) 
 	{
@@ -107,10 +117,19 @@ public class EmpWage_JavaOOPS implements IBM, Microsoft, Flipkart
 		EmpWage_JavaOOPS microsoft = new EmpWage_JavaOOPS(Microsoft.WAGE_PER_HOUR, Microsoft.FULL_DAY_HRS, Microsoft.PART_TIME_HRS, Microsoft.MAX_WORKING_DAYS, Microsoft.MAX_WORKING_HRS);
 		EmpWage_JavaOOPS flipkart = new EmpWage_JavaOOPS(Flipkart.WAGE_PER_HOUR, Flipkart.FULL_DAY_HRS, Flipkart.PART_TIME_HRS, Flipkart.MAX_WORKING_DAYS, Flipkart.MAX_WORKING_HRS);
 	
-		List<EmpWage_JavaOOPS> wageList = new ArrayList<EmpWage_JavaOOPS>();
-		wageList.add(ibm);
-		wageList.add(microsoft);
-		wageList.add(flipkart);
+		//List to store this class objects for each company
+		List<EmpWage_JavaOOPS> companyList = new ArrayList<EmpWage_JavaOOPS>();
+		companyList.add(ibm);
+		companyList.add(microsoft);
+		companyList.add(flipkart);
 		
+		System.out.println(getTotalWage(companyList.get(0)));
+		System.out.println(companyList.get(0).dailyWageArray+"\n");
+		
+		System.out.println(getTotalWage(companyList.get(1)));
+		System.out.println(companyList.get(1).dailyWageArray+"\n");
+		
+		System.out.println(getTotalWage(companyList.get(2)));
+		System.out.println(companyList.get(2).dailyWageArray+"\n");
 	}
 }
